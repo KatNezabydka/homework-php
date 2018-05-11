@@ -3,25 +3,18 @@
 namespace Cryptocurrency\Task1;
 
 include 'Currency.php';
-//
-$bitcoin = new Bitcoin(100.5);
-
-$ethereum = new Ethereum(1023.8);
-
-$dogecoin = new Dogecoin(2085.6);
-
 
 class CoinMarket
 {
     private $currency;
     private $currencies = [];
     private $maxPrice = [];
-    public function addCurrency(Currency $currency1): void
+    public function addCurrency(Currency $currency): void
     {
 
-        $this->currency[$currency1->getName()]['name'] = $currency1->getName();
-        $this->currency[$currency1->getName()]['logo'] = $currency1->getLogoUrl();
-        $this->currency[$currency1->getName()]['dayPrice'] = $currency1->getDailyPrice();
+        $this->currency[$currency->getName()]['name'] = $currency->getName();
+        $this->currency[$currency->getName()]['logo'] = $currency->getLogoUrl();
+        $this->currency[$currency->getName()]['dayPrice'] = $currency->getDailyPrice();
      }
 
     public function maxPrice(): float
@@ -42,15 +35,10 @@ class CoinMarket
     public function getCurrencies(): array
     {
         foreach ($this->currency as $key => $value){
-            $this->currencies[] = $key ;
+            $this->currencies[$key] = $value ;
         }
         return $this->currencies;
     }
 }
-
-//$money = new CoinMarket();
-//$money->addCurrency($bitcoin);
-//$money->addCurrency($ethereum);
-//$money->addCurrency($dogecoin);
 
 
