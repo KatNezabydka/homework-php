@@ -99,4 +99,40 @@ class Dogecoin implements Currency
     }
 }
 
+// could be one class
+class Coin implements Currency{
+    private $Name ;
+    private $LogoUrl;
+    private $DailyPrice;
+
+    public function __construct(float $price)
+    {
+        $this->DailyPrice = $price;
+    }
+
+    public function setName($name){
+        $this->Name = $name;
+    }
+    public function setLogoUrl($logo){
+        $this->LogoUrl = $logo;
+    }
+
+    public function getName(): string
+    {
+        return $this->Name;
+    }
+
+
+    public function getLogoUrl(): string
+    {
+        return $this->LogoUrl;
+    }
+
+    public function getDailyPrice(): float
+    {
+        return $this->DailyPrice;
+
+    }
+}
+
 
