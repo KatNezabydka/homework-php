@@ -101,5 +101,3 @@ class Dogecoin implements Currency
         return $this->DailyPrice;
     }
 }
-
-
