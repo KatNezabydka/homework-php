@@ -2,8 +2,6 @@
 
 namespace Cryptocurrency\Task1;
 
-include 'Currency.php';
-
 class CoinMarket
 {
     private $currencies = [];
@@ -16,13 +14,13 @@ class CoinMarket
 
     public function maxPrice(): float
     {
-
-        $arrayPrice = [];
-        foreach ($this->currencies as $item){
-            $arrayPrice[] =$item->getDailyPrice();
+        $maxPrice = 0;
+        foreach($this->currencies as $currency) {
+            if($currency->getDailyPrice() > $maxPrice) {
+                $maxPrice = $currency->getDailyPrice();
+            }
         }
-        $this->maxPrice = (float) max($arrayPrice);
-        return $this->maxPrice;
+        return $maxPrice;
     }
     public function getCurrencies(): array
     {
