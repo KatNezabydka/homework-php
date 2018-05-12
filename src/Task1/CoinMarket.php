@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
+
 namespace Cryptocurrency\Task1;
+
 include 'Currency.php';
 
 class CoinMarket

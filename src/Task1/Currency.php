@@ -2,7 +2,6 @@
 
 namespace Cryptocurrency\Task1;
 
-use CryptocurrencyTests\Task1\CurrenciesTest;
 
 interface Currency
 {
@@ -13,91 +12,52 @@ interface Currency
     public function getLogoUrl(): string;
 }
 
-
-class Bitcoin implements Currency
+abstract class AbstractCurrency implements Currency
 {
-    private $Name = 'Bitcoin';
-    private $LogoUrl = 'https://s2.coinmarketcap.com/static/img/coins/32x32/1.png';
-    private $DailyPrice;
+    /**
+     * @var string
+     */
+    protected $name = '';
+    /**
+     * @var string
+     */
+    protected $logo_url = '';
+    /**
+     * @var float
+     */
+    protected $daily_price = 0;
 
-    public function __construct(float $price)
-    {
-        $this->DailyPrice = $price;
+    public function __construct($price) {
+        $this->daily_price = $price;
     }
 
-    public function getName(): string
-    {
-        return $this->Name;
+    public function getName() : string  {
+        return $this->name;
     }
-
-
-    public function getLogoUrl(): string
-    {
-        return $this->LogoUrl;
+    public function getDailyPrice(): float {
+        return $this->daily_price;
     }
-
-    public function getDailyPrice(): float
-    {
-        return $this->DailyPrice;
-
+    public function getLogoUrl(): string {
+        return $this->logo_url;
     }
+}
+
+
+class Bitcoin extends AbstractCurrency
+{
+    protected $name = 'Bitcoin';
+    protected $logo_url = 'https://s2.coinmarketcap.com/static/img/coins/32x32/1.png';
+}
+
+class Ethereum extends AbstractCurrency
+{
+    protected $name = 'Ethereum';
+    protected $logo_url = 'https://s2.coinmarketcap.com/static/img/coins/32x32/1027.png';
 
 }
 
-class Ethereum implements Currency
+class Dogecoin extends AbstractCurrency
 {
-    private $Name = 'Ethereum';
-    private $LogoUrl = 'https://s2.coinmarketcap.com/static/img/coins/32x32/1027.png';
-    private $DailyPrice;
-
-    public function __construct(float $price)
-    {
-        $this->DailyPrice = $price;
-    }
-
-    public function getName(): string
-    {
-        return $this->Name;
-    }
-
-
-    public function getLogoUrl(): string
-    {
-        return $this->LogoUrl;
-    }
-
-    public function getDailyPrice(): float
-    {
-        return $this->DailyPrice;
-
-    }
-
-}
-
-class Dogecoin implements Currency
-{
-    private $Name = 'Dogecoin';
-    private $LogoUrl = 'https://s2.coinmarketcap.com/static/img/coins/32x32/74.png';
-    private $DailyPrice;
-
-    public function __construct(float $price)
-    {
-        $this->DailyPrice = $price;
-    }
-
-    public function getName(): string
-    {
-        return $this->Name;
-    }
-
-
-    public function getLogoUrl(): string
-    {
-        return $this->LogoUrl;
-    }
-
-    public function getDailyPrice(): float
-    {
-        return $this->DailyPrice;
-    }
+    protected $name = 'Dogecoin';
+    protected $logo_url = 'https://s2.coinmarketcap.com/static/img/coins/32x32/74.png';
 }
