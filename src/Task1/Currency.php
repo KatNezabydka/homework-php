@@ -2,6 +2,8 @@
 
 namespace Cryptocurrency\Task1;
 
+use CryptocurrencyTests\Task1\CurrenciesTest;
+
 interface Currency
 {
     public function getName(): string;
@@ -10,6 +12,7 @@ interface Currency
 
     public function getLogoUrl(): string;
 }
+
 
 class Bitcoin implements Currency
 {
