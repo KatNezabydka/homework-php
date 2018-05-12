@@ -6,9 +6,11 @@ use Cryptocurrency\Task1\CoinMarket;
 
 class MarketHtmlPresenter
 {
-
+    private $presentation = [];
     public function present(CoinMarket $market): string
     {
-        return serialize($market->getCurrencies());
+        $presentation[] = $market->getCurrencies();
+        $presentation[] =  $market->maxPrice();
+        return serialize($presentation);
     }
 }

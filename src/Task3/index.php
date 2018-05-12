@@ -29,10 +29,10 @@ $presentation = unserialize($marketPresenter->present($market));
     <title>Built-in Web Server</title>
 </head>
 <body>
-<?php foreach ($presentation as $present): ?>
+<?php foreach ($presentation[0] as $present): ?>
  <h1><img src="<?php echo $present->getLogoUrl() ?>" alt=""><?php echo $present->getName() ?></h1>
     <p>Price <?php echo $present->getName()?> today - <?php echo $present->getDailyPrice() ?></p>
 <?php endforeach; ?>
-
+<h2>Max price today is - <?php echo $presentation[1]?></h2>
 </body>
 </html>
