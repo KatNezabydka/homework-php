@@ -9,8 +9,8 @@ class MarketHtmlPresenter
     private $presentation = [];
     public function present(CoinMarket $market): string
     {
-        $presentation[] = $market->getCurrencies();
-        $presentation[] =  $market->maxPrice();
-        return serialize($presentation);
+        $this->presentation[] = $market->getCurrencies();
+        $this->presentation[] =  $market->maxPrice();
+        return serialize($this->presentation);
     }
 }
