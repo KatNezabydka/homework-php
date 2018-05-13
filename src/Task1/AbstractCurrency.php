@@ -17,7 +17,7 @@ abstract class AbstractCurrency implements Currency
      */
     protected $daily_price = 0;
 
-    public function __construct($price) {
+    public function __construct(float $price) {
         $this->daily_price = $price;
     }
 
